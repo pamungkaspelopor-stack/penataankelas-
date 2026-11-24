@@ -1,0 +1,2301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Penilaian Lomba Penataan Kelas — SDN 190 Cisaranten Kidul</title>
+  <style>
+    :root {
+      --bg-grad: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 42%, #10b981 100%);
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --ink: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --indigo: #4f46e5;
+      --indigo-dark: #3730a3;
+      --sky: #0284c7;
+      --emerald: #059669;
+      --amber: #d97706;
+      --rose: #e11d48;
+      --violet: #7c3aed;
+      --gold-grad: linear-gradient(145deg, #fef08a 0%, #f59e0b 100%);
+      --silver-grad: linear-gradient(145deg, #f1f5f9 0%, #94a3b8 100%);
+      --bronze-grad: linear-gradient(145deg, #ffedd5 0%, #ea580c 100%);
+      --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.10), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
+      --shadow-pop: 0 20px 35px -10px rgba(79, 70, 229, 0.25);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(99, 102, 241, 0.16), transparent 36%),
+        radial-gradient(circle at 88% 15%, rgba(14, 165, 233, 0.16), transparent 38%),
+        radial-gradient(circle at 75% 88%, rgba(16, 185, 129, 0.15), transparent 40%),
+        #f1f5f9;
+      color: var(--ink);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 20px 16px 64px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-card);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card + .card {
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 15px;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      background: var(--surface);
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .btn:hover:not(:disabled) {
+      transform: translateY(-1.5px);
+      box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
+      filter: brightness(1.03);
+    }
+
+    .btn:disabled {
+      opacity: 0.48;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-rainbow {
+      background: linear-gradient(135deg, #4f46e5 0%, #0284c7 55%, #059669 100%);
+      color: #ffffff;
+    }
+
+    .btn-emerald {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+    }
+
+    .btn-sky {
+      background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+      color: #ffffff;
+    }
+
+    .btn-violet {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      color: #ffffff;
+    }
+
+    .btn-amber {
+      background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+      color: #ffffff;
+    }
+
+    .btn-rose {
+      background: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+      color: #ffffff;
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: var(--ink);
+    }
+
+    .btn-outline:hover:not(:disabled) {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    .btn-sm {
+      padding: 7px 11px;
+      font-size: 12.5px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--ink);
+      background: #ffffff;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      font-family: inherit;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--indigo);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.16);
+    }
+
+    input:disabled,
+    textarea:disabled {
+      background: #f1f5f9;
+      color: #64748b;
+      cursor: not-allowed;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .badge-indigo { background: #e0e7ff; color: #3730a3; }
+    .badge-sky { background: #e0f2fe; color: #0369a1; }
+    .badge-emerald { background: #d1fae5; color: #065f46; }
+    .badge-amber { background: #fef3c7; color: #92400e; }
+    .badge-rose { background: #ffe4e6; color: #9f1239; }
+    .badge-violet { background: #ede9fe; color: #5b21b6; }
+    .badge-slate { background: #e2e8f0; color: #334155; }
+
+    /* Login Full Color */
+    .login-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: var(--bg-grad);
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 470px;
+      background: rgba(255, 255, 255, 0.98);
+      border: 2px solid rgba(255, 255, 255, 0.75);
+      border-radius: 22px;
+      box-shadow: var(--shadow-pop);
+      padding: 32px 26px;
+    }
+
+    .login-banner-top {
+      background: linear-gradient(120deg, #4f46e5, #0284c7, #10b981);
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+    }
+
+    .login-banner-top .school-tag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.92;
+    }
+
+    .login-banner-top .event-tag {
+      font-size: 16px;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+
+    .login-title {
+      margin: 0 0 6px;
+      font-size: 21px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .login-subtitle {
+      margin: 0 0 20px;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+
+    .token-input-group {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .token-input-group input {
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      font-weight: 800;
+      font-size: 15px;
+      background: #f8fafc;
+    }
+
+    .error-box {
+      margin-top: 12px;
+      padding: 10px 13px;
+      border-radius: var(--radius-sm);
+      background: #fff1f2;
+      border: 1.5px solid #fda4af;
+      color: #9f1239;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .info-box {
+      margin-top: 12px;
+      padding: 10px 13px;
+      border-radius: var(--radius-sm);
+      background: #eff6ff;
+      border: 1.5px solid #93c5fd;
+      color: #1d4ed8;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Colorful Topbar */
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(120deg, #312e81 0%, #0369a1 52%, #047857 100%);
+      color: #ffffff;
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 18px;
+    }
+
+    .topbar-left h1 {
+      margin: 6px 0 3px;
+      font-size: 21px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .topbar-left p {
+      margin: 0;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .topbar-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* 4 Full-Color Stat Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .stat-card {
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      color: #ffffff;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card-1 { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); }
+    .stat-card-2 { background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%); }
+    .stat-card-3 { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
+    .stat-card-4 { background: linear-gradient(135deg, #d97706 0%, #f43f5e 100%); }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.9;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 900;
+      margin: 6px 0 4px;
+    }
+
+    .stat-sub {
+      font-size: 12.5px;
+      opacity: 0.92;
+      font-weight: 600;
+    }
+
+    .stat-card .progress-bar-wrap {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .stat-card .progress-bar-fill {
+      background: #ffffff;
+    }
+
+    /* Vibrant Podium */
+    .podium-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: end;
+      margin-top: 14px;
+    }
+
+    .podium-slot {
+      border-radius: 18px;
+      padding: 20px 16px;
+      text-align: center;
+      color: #0f172a;
+      box-shadow: var(--shadow-card);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .podium-1 {
+      order: 2;
+      background: var(--gold-grad);
+      padding-top: 28px;
+      padding-bottom: 26px;
+      transform: translateY(-4px);
+    }
+
+    .podium-2 {
+      order: 1;
+      background: var(--silver-grad);
+    }
+
+    .podium-3 {
+      order: 3;
+      background: var(--bronze-grad);
+      color: #ffffff;
+    }
+
+    .podium-3 .podium-predikat {
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .podium-3 .podium-score {
+      color: #ffffff;
+    }
+
+    .podium-rank {
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 8px;
+      background: rgba(15, 23, 42, 0.82);
+      color: #ffffff;
+    }
+
+    .podium-class {
+      font-size: 21px;
+      font-weight: 900;
+      margin: 4px 0;
+    }
+
+    .podium-score {
+      font-size: 26px;
+      font-weight: 900;
+      color: #0f172a;
+    }
+
+    .podium-predikat {
+      font-size: 12px;
+      font-weight: 800;
+      color: #1e293b;
+      margin-top: 4px;
+    }
+
+    /* Tables */
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f1f5f9;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 17.5px;
+      font-weight: 900;
+      background: linear-gradient(90deg, #312e81, #0284c7, #059669);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-desc {
+      margin: 3px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1.5px solid #e2e8f0;
+      border-radius: var(--radius-sm);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 780px;
+      font-size: 13px;
+    }
+
+    th,
+    td {
+      padding: 10px 10px;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: linear-gradient(90deg, #eef2ff 0%, #e0f2fe 50%, #ecfdf5 100%);
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    tr:nth-child(even) td {
+      background: #fafcff;
+    }
+
+    tr:hover td {
+      background: #eef2ff;
+    }
+
+    .score-input {
+      width: 68px !important;
+      text-align: center;
+      font-weight: 800;
+      padding: 6px 6px !important;
+      border-color: #93c5fd !important;
+    }
+
+    .note-input {
+      min-width: 165px;
+      padding: 6px 9px !important;
+      font-size: 12.5px !important;
+    }
+
+    .total-cell {
+      font-weight: 900;
+      color: #4f46e5;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .rank-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      height: 25px;
+      padding: 0 8px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 12px;
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .rank-1 { background: #facc15; color: #713f12; box-shadow: 0 2px 6px rgba(234, 179, 8, 0.4); }
+    .rank-2 { background: #cbd5e1; color: #1e293b; }
+    .rank-3 { background: #fb923c; color: #ffffff; }
+
+    /* Admin Panels */
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 16px;
+    }
+
+    .panel-indigo {
+      background: linear-gradient(180deg, #eef2ff 0%, #ffffff 100%) !important;
+      border: 1.5px solid #c7d2fe !important;
+    }
+
+    .panel-sky {
+      background: linear-gradient(180deg, #e0f2fe 0%, #ffffff 100%) !important;
+      border: 1.5px solid #bae6fd !important;
+    }
+
+    .panel-emerald {
+      background: linear-gradient(180deg, #ecfdf5 0%, #ffffff 100%) !important;
+      border: 1.5px solid #a7f3d0 !important;
+    }
+
+    .class-edit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .class-edit-item label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #047857;
+      margin-bottom: 3px;
+    }
+
+    .token-editor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .token-editor-item label {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #3730a3;
+      margin-bottom: 4px;
+    }
+
+    .token-editor-item input {
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    pre.code-block {
+      background: #0f172a;
+      color: #a5f3fc;
+      padding: 14px;
+      border-radius: var(--radius-sm);
+      overflow-x: auto;
+      font-size: 12px;
+      line-height: 1.45;
+      max-height: 320px;
+      margin: 10px 0 0;
+    }
+
+    .toast-container {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 360px;
+    }
+
+    .toast {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 15px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: var(--shadow-pop);
+      animation: slideIn 0.2s ease;
+    }
+
+    .toast.success { background: #059669; }
+    .toast.error { background: #e11d48; }
+    .toast.info { background: #2563eb; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .progress-bar-wrap {
+      width: 100%;
+      height: 9px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #4f46e5, #0ea5e9, #10b981);
+      transition: width 0.25s ease;
+    }
+
+    .print-only-header {
+      display: none;
+    }
+
+    @media (max-width: 720px) {
+      .podium-grid {
+        grid-template-columns: 1fr;
+      }
+      .podium-1, .podium-2, .podium-3 {
+        order: unset;
+        padding-top: 18px;
+        padding-bottom: 18px;
+        transform: none;
+      }
+      .token-input-group {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print,
+      .toast-container,
+      .btn,
+      #loginScreen {
+        display: none !important;
+      }
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
+      .card, .stat-card, .topbar {
+        box-shadow: none !important;
+        border: 1px solid #cbd5e1 !important;
+        break-inside: avoid;
+        color: #000000 !important;
+        background: #ffffff !important;
+      }
+      .section-title {
+        -webkit-text-fill-color: #000000 !important;
+      }
+      .print-only-header {
+        display: block;
+        margin-bottom: 14px;
+        border-bottom: 2px solid #0f172a;
+        padding-bottom: 8px;
+      }
+      .table-wrap {
+        overflow: visible !important;
+        border: 1px solid #94a3b8;
+      }
+      table {
+        min-width: 0 !important;
+        font-size: 11px;
+      }
+      th, td {
+        padding: 6px 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- HALAMAN LOGIN BERBASIS TOKEN (TANPA DAFTAR TOKEN TERBUKA) -->
+  <div id="loginScreen" class="login-wrapper">
+    <div class="login-card">
+      <div class="login-banner-top">
+        <div class="school-tag">SDN 190 CISARANTEN KIDUL</div>
+        <div class="event-tag">LOMBA PENATAAN KELAS</div>
+      </div>
+
+      <h1 class="login-title">Login Portal Penilaian</h1>
+      <p class="login-subtitle">Masukkan token akses khusus Anda untuk membuka dashboard Panitia atau Juri.</p>
+
+      <div id="gasBannerLogin" class="info-box hidden"></div>
+
+      <form id="loginForm" autocomplete="off">
+        <label for="tokenInput" style="display:block;font-size:13px;font-weight:800;margin-bottom:6px;color:#312e81;">Token Akses</label>
+        <div class="token-input-group">
+          <input
+            type="password"
+            id="tokenInput"
+            placeholder="MASUKKAN TOKEN ANDA"
+            required
+            spellcheck="false"
+          />
+          <button type="button" id="toggleTokenBtn" class="btn btn-outline">Lihat</button>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
+          <button type="submit" class="btn btn-rainbow" style="flex:1;min-width:140px;">Masuk Dashboard</button>
+          <button type="button" id="copyJudgeLinkBtn" class="btn btn-sky">Salin Link Juri</button>
+        </div>
+      </form>
+
+      <div id="loginError" class="error-box hidden"></div>
+    </div>
+  </div>
+
+  <!-- APLIKASI UTAMA -->
+  <div id="appScreen" class="container hidden">
+    <div class="print-only-header">
+      <h2 style="margin:0;">LAPORAN HASIL LOMBA PENATAAN KELAS — SDN 190 CISARANTEN KIDUL</h2>
+      <div id="printMeta" style="font-size:12px;color:#334155;margin-top:4px;"></div>
+    </div>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;">
+          <span id="roleBadge" class="badge badge-indigo">Peran</span>
+          <span id="lockBadge" class="badge badge-emerald">Status Terbuka</span>
+          <span id="syncBadge" class="badge badge-sky">Lokal</span>
+        </div>
+        <h1>Lomba Penataan Kelas — SDN 190 Cisaranten Kidul</h1>
+        <p id="userSubtitle">Skala Penilaian 1–4 • Pembobotan Otomatis • Sinkronisasi Real-Time</p>
+      </div>
+      <div class="topbar-right no-print">
+        <button type="button" id="copyJudgeLinkAppBtn" class="btn btn-sky btn-sm">Salin Link Juri</button>
+        <button type="button" id="syncNowBtn" class="btn btn-emerald btn-sm hidden">Sinkron GAS</button>
+        <button type="button" id="printReportBtn" class="btn btn-violet btn-sm">Cetak Laporan</button>
+        <button type="button" id="logoutBtn" class="btn btn-rose btn-sm">Keluar</button>
+      </div>
+    </header>
+
+    <!-- TAMPILAN JURI -->
+    <section id="judgeView" class="hidden">
+      <div class="card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title" id="judgeFormTitle">Formulir Penilaian Juri (16 Kelas)</h2>
+            <p class="section-desc">
+              Skala nilai <strong>1 s.d. 4</strong> per aspek (nilai &gt; 4 otomatis dibatasi menjadi 4). Bobot: Tata Letak Perabotan (30%), Kelengkapan Administrasi (30%), Pencahayaan &amp; Sirkulasi Udara (20%), Estetika &amp; Kreativitas (20%).
+            </p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+            <span id="judgeProgressText" class="badge badge-sky">0 / 16 Kelas Dinilai</span>
+            <button type="button" id="resetMyScoresBtn" class="btn btn-amber btn-sm">Reset Nilai Saya</button>
+          </div>
+        </div>
+
+        <div id="judgeLockedBanner" class="error-box hidden" style="margin-bottom:14px;">
+          Penilaian sedang dikunci oleh Panitia. Anda dapat melihat rekap nilai namun tidak dapat mengubah atau mereset nilai saat ini.
+        </div>
+
+        <div class="progress-bar-wrap" style="margin-bottom:16px;">
+          <div id="judgeProgressBar" class="progress-bar-fill" style="width:0%;"></div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:46px;">No</th>
+                <th style="min-width:110px;">Kelas</th>
+                <th style="width:92px;">Tata Letak<br/>(30%)</th>
+                <th style="width:96px;">Administrasi<br/>(30%)</th>
+                <th style="width:104px;">Cahaya &amp; Udara<br/>(20%)</th>
+                <th style="width:96px;">Estetika<br/>(20%)</th>
+                <th style="width:92px;">Total Nilai</th>
+                <th style="width:105px;">Status</th>
+                <th style="min-width:180px;">Catatan Juri</th>
+              </tr>
+            </thead>
+            <tbody id="judgeTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAMPILAN PANITIA / ADMIN -->
+    <section id="adminView" class="hidden">
+      <!-- 4 KARTU STATISTIK FULL COLOR -->
+      <div class="stats-grid">
+        <div class="stat-card stat-card-1">
+          <div class="stat-label">Total Peserta</div>
+          <div class="stat-value" id="statTotalClasses">16 Kelas</div>
+          <div class="stat-sub">Peserta Lomba Penataan Kelas</div>
+        </div>
+        <div class="stat-card stat-card-2">
+          <div class="stat-label">Progres Penilaian</div>
+          <div class="stat-value" id="statProgressVal">0 / 48</div>
+          <div class="stat-sub" id="statProgressPct">0.0% entri juri terisi (16 kelas × 3 juri)</div>
+          <div class="progress-bar-wrap">
+            <div id="adminProgressBar" class="progress-bar-fill" style="width:0%;"></div>
+          </div>
+        </div>
+        <div class="stat-card stat-card-3">
+          <div class="stat-label">Rata-Rata Sekolah</div>
+          <div class="stat-value" id="statAvgSchool">0.00</div>
+          <div class="stat-sub">Rata-rata nilai akhir kelas yang sudah dinilai</div>
+        </div>
+        <div class="stat-card stat-card-4">
+          <div class="stat-label">Nilai Tertinggi</div>
+          <div class="stat-value" id="statTopScore">0.00</div>
+          <div class="stat-sub" id="statTopClass">Belum ada nilai masuk</div>
+        </div>
+      </div>
+
+      <!-- PODIUM VISUAL -->
+      <div class="card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Podium Juara Sementara (Top 3)</h2>
+            <p class="section-desc">Otomatis diperbarui berdasarkan Nilai Akhir tertinggi dari rata-rata 3 juri.</p>
+          </div>
+        </div>
+        <div class="podium-grid" id="podiumContainer"></div>
+      </div>
+
+      <!-- TABEL KLASEMEN SEMENTARA -->
+      <div class="card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Klasemen Sementara 16 Kelas</h2>
+            <p class="section-desc">Diurutkan dari peringkat #1 hingga #16 beserta predikat otomatis.</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:78px;">Peringkat</th>
+                <th>Kelas</th>
+                <th>Juri 1 (Maulana)</th>
+                <th>Juri 2 (Rika)</th>
+                <th>Juri 3 (Agus Saepudin)</th>
+                <th>Nilai Akhir</th>
+                <th>Juri Menilai</th>
+                <th>Predikat</th>
+              </tr>
+            </thead>
+            <tbody id="rankingTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TABEL REKAP GABUNGAN 16 KELAS -->
+      <div class="card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Rekap Gabungan 16 Kelas</h2>
+            <p class="section-desc">Rincian nilai per aspek &amp; total masing-masing juri, Nilai Akhir, serta catatan juri.</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:44px;">No</th>
+                <th style="min-width:105px;">Kelas</th>
+                <th style="min-width:155px;">Juri 1 (Maulana)</th>
+                <th style="min-width:155px;">Juri 2 (Rika)</th>
+                <th style="min-width:155px;">Juri 3 (Agus Saepudin)</th>
+                <th style="width:95px;">Nilai Akhir</th>
+                <th style="min-width:210px;">Catatan Juri</th>
+              </tr>
+            </thead>
+            <tbody id="recapTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PANEL ADMINISTRASI, EKSPOR & SINKRONISASI -->
+      <div class="card no-print">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Administrasi, Ekspor/Impor &amp; Sinkronisasi Google Sheets</h2>
+            <p class="section-desc">Kelola kunci penilaian, daftar 16 kelas, token akses, cadangan JSON/CSV, dan koneksi Apps Script.</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <button type="button" id="toggleLockBtn" class="btn btn-amber btn-sm">Kunci Penilaian</button>
+            <button type="button" id="exportCsvBtn" class="btn btn-emerald btn-sm">Unduh CSV / Excel</button>
+            <button type="button" id="exportJsonBtn" class="btn btn-sky btn-sm">Ekspor JSON</button>
+            <button type="button" id="importJsonBtn" class="btn btn-violet btn-sm">Impor JSON</button>
+            <input type="file" id="importJsonFile" accept=".json,application/json" class="hidden" />
+          </div>
+        </div>
+
+        <div class="admin-grid">
+          <!-- Pengaturan Token -->
+          <div class="card panel-indigo" style="margin:0;">
+            <h3 style="margin:0 0 4px;font-size:15.5px;color:#312e81;">Pengaturan Token Akses</h3>
+            <p style="margin:0 0 10px;font-size:12.5px;color:var(--muted);">Semua token wajib terisi dan tidak boleh ada yang sama.</p>
+            <div class="token-editor-grid">
+              <div class="token-editor-item">
+                <label for="editTokenAdmin">Token Panitia / Admin</label>
+                <input type="text" id="editTokenAdmin" />
+              </div>
+              <div class="token-editor-item">
+                <label for="editTokenJ1">Token Juri 1 (Maulana)</label>
+                <input type="text" id="editTokenJ1" />
+              </div>
+              <div class="token-editor-item">
+                <label for="editTokenJ2">Token Juri 2 (Rika)</label>
+                <input type="text" id="editTokenJ2" />
+              </div>
+              <div class="token-editor-item">
+                <label for="editTokenJ3">Token Juri 3 (Agus Saepudin)</label>
+                <input type="text" id="editTokenJ3" />
+              </div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+              <button type="button" id="saveTokensBtn" class="btn btn-rainbow btn-sm">Simpan Token</button>
+              <button type="button" id="resetTokensBtn" class="btn btn-outline btn-sm">Reset ke Bawaan</button>
+            </div>
+          </div>
+
+          <!-- Pengaturan Google Apps Script -->
+          <div class="card panel-sky" style="margin:0;">
+            <h3 style="margin:0 0 4px;font-size:15.5px;color:#0369a1;">Koneksi Google Sheets (Web App GAS)</h3>
+            <p style="margin:0 0 10px;font-size:12.5px;color:var(--muted);">
+              Tempelkan URL Web App Google Apps Script. Parameter <code>?gas=</code> akan otomatis disematkan pada tombol <strong>Salin Link Juri</strong>.
+            </p>
+            <label for="gasUrlInput" style="display:block;font-size:12px;font-weight:800;color:#0369a1;margin-bottom:4px;">URL Web App Google Apps Script</label>
+            <input type="text" id="gasUrlInput" placeholder="https://script.google.com/macros/s/AKfycb.../exec" />
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+              <button type="button" id="saveGasBtn" class="btn btn-sky btn-sm">Simpan &amp; Uji GAS</button>
+              <button type="button" id="clearGasBtn" class="btn btn-outline btn-sm">Hapus URL GAS</button>
+              <button type="button" id="toggleGasCodeBtn" class="btn btn-violet btn-sm">Lihat Kode Code.gs</button>
+            </div>
+
+            <div id="gasCodePanel" class="hidden" style="margin-top:12px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+                <span style="font-size:12px;font-weight:800;color:#0369a1;">Kode Siap Salin (Code.gs)</span>
+                <button type="button" id="copyGasCodeBtn" class="btn btn-emerald btn-sm">Salin Code.gs</button>
+              </div>
+              <pre id="gasCodePre" class="code-block"></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit 16 Kelas Peserta -->
+        <div class="card panel-emerald" style="margin-top:16px;">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;">
+            <div>
+              <h3 style="margin:0;font-size:15.5px;color:#065f46;">Daftar 16 Kelas Peserta</h3>
+              <p style="margin:2px 0 0;font-size:12.5px;color:var(--muted);">Default 1A s.d. 4D. Ubah nama kelas sesuai kebutuhan lalu klik Simpan Nama Kelas.</p>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button type="button" id="saveClassesBtn" class="btn btn-emerald btn-sm">Simpan Nama Kelas</button>
+              <button type="button" id="resetClassesBtn" class="btn btn-outline btn-sm">Reset 1A–4D</button>
+            </div>
+          </div>
+          <div id="classEditGrid" class="class-edit-grid"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var STORAGE_KEY = "SDN190_PENATAAN_KELAS_V1";
+      var SESSION_KEY = "SDN190_PENATAAN_SESSION_V1";
+      var CHANNEL_NAME = "sdn190_penataan_kelas_channel";
+
+      var DEFAULT_TOKENS = {
+        admin: "PANITIA-190",
+        j1: "DJAELANI-190",
+        j2: "RIKAA-190",
+        j3: "AGUSSAE-190"
+      };
+
+      var ROLE_META = {
+        admin: { label: "Panitia / Admin", name: "Panitia Lomba", badgeClass: "badge-indigo" },
+        j1: { label: "Juri 1", name: "Maulana", badgeClass: "badge-sky" },
+        j2: { label: "Juri 2", name: "Rika", badgeClass: "badge-violet" },
+        j3: { label: "Juri 3", name: "Agus Saepudin", badgeClass: "badge-emerald" }
+      };
+
+      var DEFAULT_CLASSES = [
+        "1A", "1B", "1C", "1D",
+        "2A", "2B", "2C", "2D",
+        "3A", "3B", "3C", "3D",
+        "4A", "4B", "4C", "4D"
+      ];
+
+      var GAS_CODE_TEMPLATE = [
+        "function doGet(e) {",
+        "  try {",
+        "    var ss = SpreadsheetApp.getActiveSpreadsheet();",
+        "    var sheet = getOrCreateSheet(ss, 'DataPenilaian');",
+        "    var raw = sheet.getRange('A1').getValue();",
+        "    var payload = raw ? JSON.parse(raw) : null;",
+        "    var out = JSON.stringify({ ok: true, data: payload, updatedAt: new Date().toISOString() });",
+        "    var cb = e && e.parameter && e.parameter.callback;",
+        "    if (cb) {",
+        "      return ContentService.createTextOutput(cb + '(' + out + ');').setMimeType(ContentService.MimeType.JAVASCRIPT);",
+        "    }",
+        "    return ContentService.createTextOutput(out).setMimeType(ContentService.MimeType.JSON);",
+        "  } catch (err) {",
+        "    return jsonResponse({ ok: false, error: String(err) });",
+        "  }",
+        "}",
+        "",
+        "function doPost(e) {",
+        "  var lock = LockService.getScriptLock();",
+        "  try {",
+        "    lock.waitLock(15000);",
+        "    var body = e && e.postData && e.postData.contents ? JSON.parse(e.postData.contents) : {};",
+        "    var action = body.action || 'sync';",
+        "    var ss = SpreadsheetApp.getActiveSpreadsheet();",
+        "    var sheet = getOrCreateSheet(ss, 'DataPenilaian');",
+        "    if (action === 'ping') {",
+        "      return jsonResponse({ ok: true, message: 'Koneksi Web App berhasil', timestamp: new Date().toISOString() });",
+        "    }",
+        "    var rawExisting = sheet.getRange('A1').getValue();",
+        "    var merged = rawExisting ? JSON.parse(rawExisting) : (body.state || {});",
+        "    if (action === 'sync_judge' && body.role && Array.isArray(body.scores)) {",
+        "      if (!merged.scores) merged.scores = {};",
+        "      merged.scores[body.role] = body.scores;",
+        "      merged.updatedAt = Date.now();",
+        "      sheet.getRange('A1').setValue(JSON.stringify(merged));",
+        "      writeRekapSheet(ss, merged);",
+        "    } else if (body.state) {",
+        "      var incoming = body.state;",
+        "      if (rawExisting && merged && merged.scores && incoming.scores) {",
+        "        ['j1', 'j2', 'j3'].forEach(function(r) {",
+        "          if (!incoming.scores[r]) incoming.scores[r] = merged.scores[r];",
+        "        });",
+        "      }",
+        "      incoming.updatedAt = Date.now();",
+        "      sheet.getRange('A1').setValue(JSON.stringify(incoming));",
+        "      writeRekapSheet(ss, incoming);",
+        "    }",
+        "    return jsonResponse({ ok: true, syncedAt: new Date().toISOString() });",
+        "  } catch (err) {",
+        "    return jsonResponse({ ok: false, error: String(err) });",
+        "  } finally {",
+        "    try { lock.releaseLock(); } catch (ignore) {}",
+        "  }",
+        "}",
+        "",
+        "function getOrCreateSheet(ss, name) {",
+        "  var sh = ss.getSheetByName(name);",
+        "  if (!sh) sh = ss.insertSheet(name);",
+        "  return sh;",
+        "}",
+        "",
+        "function writeRekapSheet(ss, state) {",
+        "  var sh = getOrCreateSheet(ss, 'RekapNilai');",
+        "  sh.clearContents();",
+        "  var headers = ['Kelas', 'Juri 1 (Maulana)', 'Juri 2 (Rika)', 'Juri 3 (Agus Saepudin)', 'Nilai Akhir', 'Catatan'];",
+        "  sh.appendRow(headers);",
+        "  var classes = state.classes || [];",
+        "  var scores = state.scores || {};",
+        "  for (var i = 0; i < classes.length; i++) {",
+        "    var cName = classes[i];",
+        "    var s1 = calcJudgeTotal(scores.j1 && scores.j1[i]);",
+        "    var s2 = calcJudgeTotal(scores.j2 && scores.j2[i]);",
+        "    var s3 = calcJudgeTotal(scores.j3 && scores.j3[i]);",
+        "    var valid = [s1, s2, s3].filter(function(v) { return typeof v === 'number'; });",
+        "    var avg = valid.length ? (valid.reduce(function(a,b){return a+b;},0) / valid.length).toFixed(2) : '';",
+        "    var notes = [0,1,2].map(function(idx){",
+        "      var k = ['j1','j2','j3'][idx];",
+        "      var item = scores[k] && scores[k][i];",
+        "      return item && item.note ? ('J' + (idx+1) + ': ' + item.note) : '';",
+        "    }).filter(Boolean).join(' | ');",
+        "    sh.appendRow([cName, s1 !== null ? s1.toFixed(2) : '', s2 !== null ? s2.toFixed(2) : '', s3 !== null ? s3.toFixed(2) : '', avg, notes]);",
+        "  }",
+        "}",
+        "",
+        "function calcJudgeTotal(entry) {",
+        "  if (!entry) return null;",
+        "  var a = Number(entry.a), b = Number(entry.b), c = Number(entry.c), d = Number(entry.d);",
+        "  if ([a,b,c,d].some(function(n){ return isNaN(n) || n <= 0; })) return null;",
+        "  var val = (((a * 0.30) + (b * 0.30) + (c * 0.20) + (d * 0.20)) / 4) * 100;",
+        "  return Math.round(val * 100) / 100;",
+        "}",
+        "",
+        "function jsonResponse(obj) {",
+        "  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);",
+        "}"
+      ].join("\n");
+
+      function createEmptyScores(count) {
+        var list = [];
+        for (var i = 0; i < count; i++) {
+          list.push({ a: "", b: "", c: "", d: "", note: "" });
+        }
+        return list;
+      }
+
+      function createDefaultState() {
+        return {
+          classes: DEFAULT_CLASSES.slice(),
+          tokens: {
+            admin: DEFAULT_TOKENS.admin,
+            j1: DEFAULT_TOKENS.j1,
+            j2: DEFAULT_TOKENS.j2,
+            j3: DEFAULT_TOKENS.j3
+          },
+          locked: false,
+          gasUrl: "",
+          updatedAt: Date.now(),
+          scores: {
+            j1: createEmptyScores(16),
+            j2: createEmptyScores(16),
+            j3: createEmptyScores(16)
+          }
+        };
+      }
+
+      function normalizeState(raw) {
+        var base = createDefaultState();
+        if (!raw || typeof raw !== "object") return base;
+
+        if (Array.isArray(raw.classes) && raw.classes.length === 16) {
+          base.classes = raw.classes.map(function (c, idx) {
+            var s = String(c || "").trim();
+            return s || DEFAULT_CLASSES[idx];
+          });
+        }
+
+        if (raw.tokens && typeof raw.tokens === "object") {
+          ["admin", "j1", "j2", "j3"].forEach(function (role) {
+            var val = String(raw.tokens[role] || "").trim().toUpperCase();
+            if (val) base.tokens[role] = val;
+          });
+        }
+
+        base.locked = Boolean(raw.locked);
+        base.gasUrl = typeof raw.gasUrl === "string" ? raw.gasUrl.trim() : "";
+        base.updatedAt = typeof raw.updatedAt === "number" ? raw.updatedAt : Date.now();
+
+        ["j1", "j2", "j3"].forEach(function (role) {
+          var arr = (raw.scores && Array.isArray(raw.scores[role])) ? raw.scores[role] : [];
+          base.scores[role] = createEmptyScores(16).map(function (emptyItem, i) {
+            var item = arr[i] || {};
+            return {
+              a: sanitizeScaleVal(item.a),
+              b: sanitizeScaleVal(item.b),
+              c: sanitizeScaleVal(item.c),
+              d: sanitizeScaleVal(item.d),
+              note: typeof item.note === "string" ? item.note : ""
+            };
+          });
+        });
+
+        return base;
+      }
+
+      function sanitizeScaleVal(v) {
+        if (v === "" || v === null || v === undefined) return "";
+        var num = Number(v);
+        if (isNaN(num)) return "";
+        if (num < 1) return 1;
+        if (num > 4) return 4;
+        return num;
+      }
+
+      var state = loadState();
+      var currentRole = null;
+      var broadcast = null;
+
+      try {
+        if ("BroadcastChannel" in window) {
+          broadcast = new BroadcastChannel(CHANNEL_NAME);
+          broadcast.onmessage = function (ev) {
+            if (ev && ev.data && ev.data.type === "STATE_UPDATED" && ev.data.state) {
+              state = normalizeState(ev.data.state);
+              saveStateLocalOnly(state);
+              renderAll();
+            }
+          };
+        }
+      } catch (e) {}
+
+      window.addEventListener("storage", function (ev) {
+        if (ev.key === STORAGE_KEY && ev.newValue) {
+          try {
+            state = normalizeState(JSON.parse(ev.newValue));
+            renderAll();
+          } catch (e) {}
+        }
+      });
+
+      function loadState() {
+        try {
+          var saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            return normalizeState(JSON.parse(saved));
+          }
+        } catch (e) {}
+        return createDefaultState();
+      }
+
+      function saveStateLocalOnly(nextState) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(nextState));
+        } catch (e) {}
+      }
+
+      function commitState(options) {
+        var opts = options || {};
+        state.updatedAt = Date.now();
+        saveStateLocalOnly(state);
+        if (broadcast) {
+          try {
+            broadcast.postMessage({ type: "STATE_UPDATED", state: state });
+          } catch (e) {}
+        }
+        renderAll();
+        if (opts.syncGas !== false && state.gasUrl) {
+          if (pushDebounceTimer) clearTimeout(pushDebounceTimer);
+          pushToGas(false);
+        }
+      }
+
+      function showToast(msg, type) {
+        var container = document.getElementById("toastContainer");
+        var el = document.createElement("div");
+        el.className = "toast " + (type || "info");
+        el.textContent = msg;
+        container.appendChild(el);
+        setTimeout(function () {
+          if (el.parentNode) el.parentNode.removeChild(el);
+        }, 3200);
+      }
+
+      function getGasFromQuery() {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var gas = params.get("gas");
+          return gas ? gas.trim() : "";
+        } catch (e) {
+          return "";
+        }
+      }
+
+      function buildJudgeLink() {
+        var url = new URL(window.location.href);
+        url.search = "";
+        url.hash = "";
+        var gasVal = state.gasUrl || getGasFromQuery();
+        if (gasVal) {
+          url.searchParams.set("gas", gasVal);
+        }
+        return url.toString();
+      }
+
+      function copyTextToClipboard(text, successMsg) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            showToast(successMsg || "Berhasil disalin ke papan klip.", "success");
+          }).catch(function () {
+            fallbackCopy(text, successMsg);
+          });
+        } else {
+          fallbackCopy(text, successMsg);
+        }
+      }
+
+      function fallbackCopy(text, successMsg) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand("copy");
+          showToast(successMsg || "Berhasil disalin ke papan klip.", "success");
+        } catch (e) {
+          showToast("Gagal menyalin otomatis.", "error");
+        }
+        document.body.removeChild(ta);
+      }
+
+      function calcJudgeScore(entry) {
+        if (!entry) return null;
+        var a = Number(entry.a);
+        var b = Number(entry.b);
+        var c = Number(entry.c);
+        var d = Number(entry.d);
+        if (
+          entry.a === "" || entry.b === "" || entry.c === "" || entry.d === "" ||
+          isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d)
+        ) {
+          return null;
+        }
+        var raw = (((a * 0.30) + (b * 0.30) + (c * 0.20) + (d * 0.20)) / 4) * 100;
+        return Math.round(raw * 100) / 100;
+      }
+
+      function getClassSummary(classIdx) {
+        var j1Score = calcJudgeScore(state.scores.j1[classIdx]);
+        var j2Score = calcJudgeScore(state.scores.j2[classIdx]);
+        var j3Score = calcJudgeScore(state.scores.j3[classIdx]);
+
+        var scoresList = [j1Score, j2Score, j3Score].filter(function (v) {
+          return typeof v === "number" && !isNaN(v);
+        });
+
+        var finalScore = null;
+        if (scoresList.length > 0) {
+          var sum = scoresList.reduce(function (acc, val) { return acc + val; }, 0);
+          finalScore = Math.round((sum / scoresList.length) * 100) / 100;
+        }
+
+        var notesParts = [];
+        ["j1", "j2", "j3"].forEach(function (roleKey, idx) {
+          var n = (state.scores[roleKey][classIdx] && state.scores[roleKey][classIdx].note || "").trim();
+          if (n) {
+            notesParts.push("Juri " + (idx + 1) + ": " + n);
+          }
+        });
+
+        return {
+          index: classIdx,
+          className: state.classes[classIdx] || DEFAULT_CLASSES[classIdx],
+          j1: j1Score,
+          j2: j2Score,
+          j3: j3Score,
+          finalScore: finalScore,
+          judgesCount: scoresList.length,
+          notesText: notesParts.join(" • ")
+        };
+      }
+
+      function getPredikat(finalScore, judgesCount) {
+        if (finalScore === null || judgesCount === 0) {
+          return { label: "Belum Dinilai", badge: "badge-slate" };
+        }
+        if (finalScore >= 90) return { label: "Sangat Baik Sekali (A+)", badge: "badge-emerald" };
+        if (finalScore >= 80) return { label: "Sangat Baik (A)", badge: "badge-sky" };
+        if (finalScore >= 70) return { label: "Baik (B)", badge: "badge-indigo" };
+        if (finalScore >= 60) return { label: "Cukup (C)", badge: "badge-amber" };
+        return { label: "Perlu Pembenahan (D)", badge: "badge-rose" };
+      }
+
+      function initAuth() {
+        var qGas = getGasFromQuery();
+        if (qGas && !state.gasUrl) {
+          state.gasUrl = qGas;
+          saveStateLocalOnly(state);
+        }
+
+        var banner = document.getElementById("gasBannerLogin");
+        if (state.gasUrl) {
+          banner.classList.remove("hidden");
+          banner.className = "info-box";
+          banner.textContent = "Koneksi server Google Sheets aktif. Nilai yang diinput juri akan otomatis terkirim ke Panitia.";
+        } else {
+          banner.classList.remove("hidden");
+          banner.className = "error-box";
+          banner.textContent = "Perhatian: Tautan ini belum terhubung ke URL Google Apps Script (mode lokal). Untuk sinkron antar perangkat Juri dan Panitia, Panitia wajib mengisi URL Web App GAS lalu membagikan 'Salin Link Juri'.";
+        }
+
+        try {
+          var savedRole = sessionStorage.getItem(SESSION_KEY);
+          if (savedRole && ROLE_META[savedRole]) {
+            enterApp(savedRole);
+            return;
+          }
+        } catch (e) {}
+
+        showLoginScreen();
+      }
+
+      function showLoginScreen() {
+        currentRole = null;
+        document.getElementById("appScreen").classList.add("hidden");
+        document.getElementById("loginScreen").classList.remove("hidden");
+        document.getElementById("tokenInput").value = "";
+        document.getElementById("loginError").classList.add("hidden");
+      }
+
+      function enterApp(role) {
+        currentRole = role;
+        try {
+          sessionStorage.setItem(SESSION_KEY, role);
+        } catch (e) {}
+
+        document.getElementById("loginScreen").classList.add("hidden");
+        document.getElementById("appScreen").classList.remove("hidden");
+
+        var meta = ROLE_META[role];
+        var badge = document.getElementById("roleBadge");
+        badge.textContent = meta.label + " • " + meta.name;
+        badge.className = "badge " + meta.badgeClass;
+
+        document.getElementById("userSubtitle").textContent =
+          "Masuk sebagai " + meta.label + " (" + meta.name + ") • SDN 190 Cisaranten Kidul";
+
+        var syncBtn = document.getElementById("syncNowBtn");
+        if (state.gasUrl) {
+          syncBtn.classList.remove("hidden");
+        } else {
+          syncBtn.classList.add("hidden");
+        }
+
+        if (role === "admin") {
+          document.getElementById("judgeView").classList.add("hidden");
+          document.getElementById("adminView").classList.remove("hidden");
+          populateAdminInputs();
+        } else {
+          document.getElementById("adminView").classList.add("hidden");
+          document.getElementById("judgeView").classList.remove("hidden");
+          document.getElementById("judgeFormTitle").textContent =
+            "Formulir Penilaian " + meta.label + " (" + meta.name + ")";
+        }
+
+        renderAll();
+        if (state.gasUrl) {
+          pullFromGas(false);
+          startAutoPoll();
+        }
+      }
+
+      document.getElementById("toggleTokenBtn").addEventListener("click", function () {
+        var inp = document.getElementById("tokenInput");
+        var isPwd = inp.type === "password";
+        inp.type = isPwd ? "text" : "password";
+        this.textContent = isPwd ? "Sembunyi" : "Lihat";
+      });
+
+      document.getElementById("tokenInput").addEventListener("input", function () {
+        this.value = this.value.toUpperCase();
+      });
+
+      document.getElementById("loginForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var rawToken = document.getElementById("tokenInput").value.trim().toUpperCase();
+        var errBox = document.getElementById("loginError");
+        if (!rawToken) {
+          errBox.textContent = "Silakan masukkan token akses terlebih dahulu.";
+          errBox.classList.remove("hidden");
+          return;
+        }
+
+        var matchedRole = null;
+        ["admin", "j1", "j2", "j3"].forEach(function (r) {
+          if (state.tokens[r] === rawToken) {
+            matchedRole = r;
+          }
+        });
+
+        if (!matchedRole) {
+          errBox.textContent = "Token tidak dikenali. Periksa kembali token Panitia atau Juri Anda.";
+          errBox.classList.remove("hidden");
+          return;
+        }
+
+        errBox.classList.add("hidden");
+        enterApp(matchedRole);
+        showToast("Selamat datang, " + ROLE_META[matchedRole].label + " (" + ROLE_META[matchedRole].name + ").", "success");
+      });
+
+      document.getElementById("copyJudgeLinkBtn").addEventListener("click", function () {
+        copyTextToClipboard(buildJudgeLink(), "Link Juri berhasil disalin.");
+      });
+
+      document.getElementById("copyJudgeLinkAppBtn").addEventListener("click", function () {
+        copyTextToClipboard(buildJudgeLink(), "Link Juri berhasil disalin.");
+      });
+
+      document.getElementById("logoutBtn").addEventListener("click", function () {
+        try {
+          sessionStorage.removeItem(SESSION_KEY);
+        } catch (e) {}
+        showToast("Anda telah keluar dari sesi.", "info");
+        showLoginScreen();
+      });
+
+      document.getElementById("printReportBtn").addEventListener("click", function () {
+        var nowStr = new Date().toLocaleString("id-ID", { dateStyle: "full", timeStyle: "short" });
+        document.getElementById("printMeta").textContent =
+          "Dicetak pada: " + nowStr + " • Status Penilaian: " + (state.locked ? "DIKUNCI" : "TERBUKA");
+        window.print();
+      });
+
+      function renderAll() {
+        var lockBadge = document.getElementById("lockBadge");
+        if (state.locked) {
+          lockBadge.textContent = "Penilaian Dikunci";
+          lockBadge.className = "badge badge-rose";
+        } else {
+          lockBadge.textContent = "Penilaian Terbuka";
+          lockBadge.className = "badge badge-emerald";
+        }
+
+        var syncBadge = document.getElementById("syncBadge");
+        if (state.gasUrl) {
+          syncBadge.textContent = "GAS Terhubung";
+          syncBadge.className = "badge badge-emerald";
+        } else {
+          syncBadge.textContent = "Penyimpanan Lokal";
+          syncBadge.className = "badge badge-sky";
+        }
+
+        var syncBtn = document.getElementById("syncNowBtn");
+        if (currentRole) {
+          if (state.gasUrl) syncBtn.classList.remove("hidden");
+          else syncBtn.classList.add("hidden");
+        }
+
+        if (currentRole === "j1" || currentRole === "j2" || currentRole === "j3") {
+          renderJudgeView(currentRole);
+        } else if (currentRole === "admin") {
+          renderAdminView();
+        }
+      }
+
+      function renderJudgeView(role) {
+        var tbody = document.getElementById("judgeTableBody");
+        var rows = state.scores[role];
+        var completedCount = 0;
+
+        document.getElementById("judgeLockedBanner").classList.toggle("hidden", !state.locked);
+        document.getElementById("resetMyScoresBtn").disabled = state.locked;
+
+        var html = "";
+        for (var i = 0; i < 16; i++) {
+          var item = rows[i] || { a: "", b: "", c: "", d: "", note: "" };
+          var total = calcJudgeScore(item);
+          var done = total !== null;
+          if (done) completedCount++;
+
+          var disAttr = state.locked ? "disabled" : "";
+          var statusBadge = done
+            ? '<span class="badge badge-emerald">Sudah Dinilai</span>'
+            : '<span class="badge badge-amber">Belum</span>';
+
+          html += "<tr>";
+          html += "<td><strong>" + (i + 1) + "</strong></td>";
+          html += "<td><strong>" + escapeHtml(state.classes[i]) + "</strong></td>";
+          html += '<td><input type="number" class="score-input" min="1" max="4" step="0.01" data-idx="' + i + '" data-field="a" value="' + escapeAttr(item.a) + '" placeholder="1-4" ' + disAttr + " /></td>";
+          html += '<td><input type="number" class="score-input" min="1" max="4" step="0.01" data-idx="' + i + '" data-field="b" value="' + escapeAttr(item.b) + '" placeholder="1-4" ' + disAttr + " /></td>";
+          html += '<td><input type="number" class="score-input" min="1" max="4" step="0.01" data-idx="' + i + '" data-field="c" value="' + escapeAttr(item.c) + '" placeholder="1-4" ' + disAttr + " /></td>";
+          html += '<td><input type="number" class="score-input" min="1" max="4" step="0.01" data-idx="' + i + '" data-field="d" value="' + escapeAttr(item.d) + '" placeholder="1-4" ' + disAttr + " /></td>";
+          html += '<td class="total-cell" id="judgeTotal_' + i + '">' + (total !== null ? total.toFixed(2) : "-") + "</td>";
+          html += '<td id="judgeStatus_' + i + '">' + statusBadge + "</td>";
+          html += '<td><input type="text" class="note-input" data-idx="' + i + '" data-field="note" value="' + escapeAttr(item.note) + '" placeholder="Catatan kelas (opsional)" ' + disAttr + " /></td>";
+          html += "</tr>";
+        }
+
+        tbody.innerHTML = html;
+
+        var pct = (completedCount / 16) * 100;
+        document.getElementById("judgeProgressText").textContent = completedCount + " / 16 Kelas Dinilai";
+        document.getElementById("judgeProgressBar").style.width = pct.toFixed(1) + "%";
+
+        var inputs = tbody.querySelectorAll("input");
+        inputs.forEach(function (inp) {
+          inp.addEventListener("input", function () {
+            if (state.locked) return;
+            var idx = Number(this.getAttribute("data-idx"));
+            var field = this.getAttribute("data-field");
+            var target = state.scores[currentRole][idx];
+
+            if (field === "note") {
+              target.note = this.value;
+              saveStateLocalOnly(state);
+              if (broadcast) {
+                try { broadcast.postMessage({ type: "STATE_UPDATED", state: state }); } catch (e) {}
+              }
+              scheduleAutoPush();
+              return;
+            }
+
+            if (this.value === "") {
+              target[field] = "";
+            } else {
+              var num = Number(this.value);
+              if (isNaN(num)) {
+                return;
+              }
+              if (num > 4) {
+                num = 4;
+                this.value = "4";
+                showToast("Nilai maksimal per aspek adalah 4. Otomatis dibatasi menjadi 4.", "info");
+              }
+              target[field] = num;
+            }
+
+            updateJudgeRowSummary(idx);
+            saveStateLocalOnly(state);
+            if (broadcast) {
+              try { broadcast.postMessage({ type: "STATE_UPDATED", state: state }); } catch (e) {}
+            }
+            scheduleAutoPush();
+          });
+
+          inp.addEventListener("change", function () {
+            if (state.locked) return;
+            var idx = Number(this.getAttribute("data-idx"));
+            var field = this.getAttribute("data-field");
+            if (field === "note") {
+              commitState();
+              return;
+            }
+            if (this.value === "") {
+              state.scores[currentRole][idx][field] = "";
+            } else {
+              var num = Number(this.value);
+              if (isNaN(num)) {
+                num = "";
+              } else {
+                if (num > 4) num = 4;
+                if (num < 1) num = 1;
+              }
+              state.scores[currentRole][idx][field] = num;
+              this.value = num === "" ? "" : String(num);
+            }
+            updateJudgeRowSummary(idx);
+            commitState();
+          });
+        });
+      }
+
+      function updateJudgeRowSummary(idx) {
+        var item = state.scores[currentRole][idx];
+        var total = calcJudgeScore(item);
+        var done = total !== null;
+
+        var totalEl = document.getElementById("judgeTotal_" + idx);
+        var statusEl = document.getElementById("judgeStatus_" + idx);
+        if (totalEl) totalEl.textContent = done ? total.toFixed(2) : "-";
+        if (statusEl) {
+          statusEl.innerHTML = done
+            ? '<span class="badge badge-emerald">Sudah Dinilai</span>'
+            : '<span class="badge badge-amber">Belum</span>';
+        }
+
+        var doneCount = 0;
+        for (var i = 0; i < 16; i++) {
+          if (calcJudgeScore(state.scores[currentRole][i]) !== null) doneCount++;
+        }
+        document.getElementById("judgeProgressText").textContent = doneCount + " / 16 Kelas Dinilai";
+        document.getElementById("judgeProgressBar").style.width = ((doneCount / 16) * 100).toFixed(1) + "%";
+      }
+
+      document.getElementById("resetMyScoresBtn").addEventListener("click", function () {
+        if (!currentRole || currentRole === "admin") return;
+        if (state.locked) {
+          showToast("Penilaian sedang dikunci Panitia.", "error");
+          return;
+        }
+        if (!confirm("Yakin ingin mereset semua nilai dan catatan Anda (" + ROLE_META[currentRole].label + ")?")) {
+          return;
+        }
+        state.scores[currentRole] = createEmptyScores(16);
+        commitState();
+        showToast("Nilai Anda berhasil direset.", "success");
+      });
+
+      function renderAdminView() {
+        var summaries = [];
+        for (var i = 0; i < 16; i++) {
+          summaries.push(getClassSummary(i));
+        }
+
+        var filledEntries = 0;
+        ["j1", "j2", "j3"].forEach(function (r) {
+          for (var c = 0; c < 16; c++) {
+            if (calcJudgeScore(state.scores[r][c]) !== null) filledEntries++;
+          }
+        });
+        var pctEntries = (filledEntries / 48) * 100;
+
+        var gradedClasses = summaries.filter(function (s) { return s.finalScore !== null; });
+        var avgSchool = 0;
+        if (gradedClasses.length > 0) {
+          var sumFinal = gradedClasses.reduce(function (acc, s) { return acc + s.finalScore; }, 0);
+          avgSchool = sumFinal / gradedClasses.length;
+        }
+
+        var ranked = summaries.slice().sort(function (a, b) {
+          var scoreA = a.finalScore !== null ? a.finalScore : -1;
+          var scoreB = b.finalScore !== null ? b.finalScore : -1;
+          if (scoreB !== scoreA) return scoreB - scoreA;
+          if (b.judgesCount !== a.judgesCount) return b.judgesCount - a.judgesCount;
+          return a.index - b.index;
+        });
+
+        var topItem = (ranked.length > 0 && ranked[0].finalScore !== null) ? ranked[0] : null;
+
+        document.getElementById("statTotalClasses").textContent = "16 Kelas";
+        document.getElementById("statProgressVal").textContent = filledEntries + " / 48";
+        document.getElementById("statProgressPct").textContent =
+          pctEntries.toFixed(1) + "% entri juri terisi (" + gradedClasses.length + "/16 kelas bernilai)";
+        document.getElementById("adminProgressBar").style.width = pctEntries.toFixed(1) + "%";
+        document.getElementById("statAvgSchool").textContent = avgSchool.toFixed(2);
+        document.getElementById("statTopScore").textContent = topItem ? topItem.finalScore.toFixed(2) : "0.00";
+        document.getElementById("statTopClass").textContent = topItem
+          ? "Kelas " + topItem.className + " (" + topItem.judgesCount + "/3 juri)"
+          : "Belum ada nilai masuk";
+
+        var lockBtn = document.getElementById("toggleLockBtn");
+        if (state.locked) {
+          lockBtn.textContent = "Buka Kunci Penilaian";
+          lockBtn.className = "btn btn-emerald btn-sm";
+        } else {
+          lockBtn.textContent = "Kunci Penilaian";
+          lockBtn.className = "btn btn-amber btn-sm";
+        }
+
+        renderPodium(ranked);
+        renderRankingTable(ranked);
+        renderRecapTable(summaries);
+      }
+
+      function renderPodium(ranked) {
+        var container = document.getElementById("podiumContainer");
+        var slots = [
+          { rankNum: 1, cls: "podium-1", label: "Juara 1" },
+          { rankNum: 2, cls: "podium-2", label: "Juara 2" },
+          { rankNum: 3, cls: "podium-3", label: "Juara 3" }
+        ];
+
+        var html = "";
+        slots.forEach(function (slot) {
+          var item = ranked[slot.rankNum - 1];
+          var hasScore = item && item.finalScore !== null;
+          var className = item ? "Kelas " + escapeHtml(item.className) : "-";
+          var scoreText = hasScore ? item.finalScore.toFixed(2) : "-";
+          var pred = getPredikat(hasScore ? item.finalScore : null, item ? item.judgesCount : 0);
+
+          html += '<div class="podium-slot ' + slot.cls + '">';
+          html += '<div class="podium-rank">' + slot.label + "</div>";
+          html += '<div class="podium-class">' + className + "</div>";
+          html += '<div class="podium-score">' + scoreText + "</div>";
+          html += '<div class="podium-predikat">' + escapeHtml(pred.label) + "</div>";
+          html += "</div>";
+        });
+
+        container.innerHTML = html;
+      }
+
+      function renderRankingTable(ranked) {
+        var tbody = document.getElementById("rankingTableBody");
+        var html = "";
+
+        ranked.forEach(function (item, idx) {
+          var rankNo = idx + 1;
+          var rankClass = rankNo === 1 ? "rank-1" : (rankNo === 2 ? "rank-2" : (rankNo === 3 ? "rank-3" : ""));
+          var pred = getPredikat(item.finalScore, item.judgesCount);
+
+          html += "<tr>";
+          html += '<td><span class="rank-pill ' + rankClass + '">#' + rankNo + "</span></td>";
+          html += "<td><strong>" + escapeHtml(item.className) + "</strong></td>";
+          html += "<td>" + (item.j1 !== null ? item.j1.toFixed(2) : '<span style="color:#94a3b8;">-</span>') + "</td>";
+          html += "<td>" + (item.j2 !== null ? item.j2.toFixed(2) : '<span style="color:#94a3b8;">-</span>') + "</td>";
+          html += "<td>" + (item.j3 !== null ? item.j3.toFixed(2) : '<span style="color:#94a3b8;">-</span>') + "</td>";
+          html += '<td class="total-cell">' + (item.finalScore !== null ? item.finalScore.toFixed(2) : "-") + "</td>";
+          html += "<td>" + item.judgesCount + " / 3</td>";
+          html += '<td><span class="badge ' + pred.badge + '">' + escapeHtml(pred.label) + "</span></td>";
+          html += "</tr>";
+        });
+
+        tbody.innerHTML = html;
+      }
+
+      function formatJudgeDetail(roleKey, idx) {
+        var entry = state.scores[roleKey][idx];
+        var total = calcJudgeScore(entry);
+        if (total === null) {
+          return '<span style="color:#94a3b8;">Belum dinilai</span>';
+        }
+        return (
+          '<div style="font-weight:900;color:#4f46e5;">Total: ' + total.toFixed(2) + "</div>" +
+          '<div style="font-size:11px;color:#475569;">TL:' + entry.a + " | Adm:" + entry.b + " | Cah:" + entry.c + " | Est:" + entry.d + "</div>"
+        );
+      }
+
+      function renderRecapTable(summaries) {
+        var tbody = document.getElementById("recapTableBody");
+        var html = "";
+
+        summaries.forEach(function (item, idx) {
+          html += "<tr>";
+          html += "<td><strong>" + (idx + 1) + "</strong></td>";
+          html += "<td><strong>" + escapeHtml(item.className) + "</strong></td>";
+          html += "<td>" + formatJudgeDetail("j1", idx) + "</td>";
+          html += "<td>" + formatJudgeDetail("j2", idx) + "</td>";
+          html += "<td>" + formatJudgeDetail("j3", idx) + "</td>";
+          html += '<td class="total-cell">' + (item.finalScore !== null ? item.finalScore.toFixed(2) : "-") + "</td>";
+          html += "<td>" + (item.notesText ? escapeHtml(item.notesText) : '<span style="color:#94a3b8;">-</span>') + "</td>";
+          html += "</tr>";
+        });
+
+        tbody.innerHTML = html;
+      }
+
+      function populateAdminInputs() {
+        document.getElementById("editTokenAdmin").value = state.tokens.admin;
+        document.getElementById("editTokenJ1").value = state.tokens.j1;
+        document.getElementById("editTokenJ2").value = state.tokens.j2;
+        document.getElementById("editTokenJ3").value = state.tokens.j3;
+        document.getElementById("gasUrlInput").value = state.gasUrl || "";
+        document.getElementById("gasCodePre").textContent = GAS_CODE_TEMPLATE;
+
+        var grid = document.getElementById("classEditGrid");
+        var html = "";
+        for (var i = 0; i < 16; i++) {
+          html += '<div class="class-edit-item">';
+          html += '<label for="clsInp_' + i + '">Kelas #' + (i + 1) + "</label>";
+          html += '<input type="text" id="clsInp_' + i + '" value="' + escapeAttr(state.classes[i]) + '" />';
+          html += "</div>";
+        }
+        grid.innerHTML = html;
+      }
+
+      document.getElementById("toggleLockBtn").addEventListener("click", function () {
+        state.locked = !state.locked;
+        commitState();
+        showToast(state.locked ? "Penilaian dikunci untuk semua juri." : "Kunci penilaian dibuka.", "info");
+      });
+
+      document.getElementById("saveTokensBtn").addEventListener("click", function () {
+        var tAdmin = document.getElementById("editTokenAdmin").value.trim().toUpperCase();
+        var tJ1 = document.getElementById("editTokenJ1").value.trim().toUpperCase();
+        var tJ2 = document.getElementById("editTokenJ2").value.trim().toUpperCase();
+        var tJ3 = document.getElementById("editTokenJ3").value.trim().toUpperCase();
+
+        var vals = [tAdmin, tJ1, tJ2, tJ3];
+        if (vals.some(function (v) { return !v; })) {
+          showToast("Semua token wajib terisi dan tidak boleh kosong.", "error");
+          return;
+        }
+
+        var uniqueSet = new Set(vals);
+        if (uniqueSet.size !== vals.length) {
+          showToast("Setiap peran harus memiliki token yang berbeda (tidak boleh sama).", "error");
+          return;
+        }
+
+        state.tokens = { admin: tAdmin, j1: tJ1, j2: tJ2, j3: tJ3 };
+        populateAdminInputs();
+        commitState();
+        showToast("Token akses berhasil diperbarui.", "success");
+      });
+
+      document.getElementById("resetTokensBtn").addEventListener("click", function () {
+        state.tokens = {
+          admin: DEFAULT_TOKENS.admin,
+          j1: DEFAULT_TOKENS.j1,
+          j2: DEFAULT_TOKENS.j2,
+          j3: DEFAULT_TOKENS.j3
+        };
+        populateAdminInputs();
+        commitState();
+        showToast("Token dikembalikan ke pengaturan bawaan.", "info");
+      });
+
+      document.getElementById("saveClassesBtn").addEventListener("click", function () {
+        var nextClasses = [];
+        for (var i = 0; i < 16; i++) {
+          var val = document.getElementById("clsInp_" + i).value.trim();
+          nextClasses.push(val || DEFAULT_CLASSES[i]);
+        }
+        state.classes = nextClasses;
+        populateAdminInputs();
+        commitState();
+        showToast("Daftar 16 nama kelas berhasil disimpan.", "success");
+      });
+
+      document.getElementById("resetClassesBtn").addEventListener("click", function () {
+        state.classes = DEFAULT_CLASSES.slice();
+        populateAdminInputs();
+        commitState();
+        showToast("Nama kelas dikembalikan ke 1A s.d. 4D.", "info");
+      });
+
+      document.getElementById("exportCsvBtn").addEventListener("click", function () {
+        var summaries = [];
+        for (var i = 0; i < 16; i++) {
+          summaries.push(getClassSummary(i));
+        }
+        var ranked = summaries.slice().sort(function (a, b) {
+          var sA = a.finalScore !== null ? a.finalScore : -1;
+          var sB = b.finalScore !== null ? b.finalScore : -1;
+          if (sB !== sA) return sB - sA;
+          return a.index - b.index;
+        });
+
+        var rankMap = {};
+        ranked.forEach(function (item, pos) {
+          rankMap[item.index] = pos + 1;
+        });
+
+        var headers = [
+          "No",
+          "Kelas",
+          "Peringkat",
+          "Juri 1 Total",
+          "Juri 2 Total",
+          "Juri 3 Total",
+          "Nilai Akhir",
+          "Predikat",
+          "Catatan"
+        ];
+
+        var lines = [headers.map(csvEscape).join(",")];
+        summaries.forEach(function (item, idx) {
+          var pred = getPredikat(item.finalScore, item.judgesCount);
+          var row = [
+            idx + 1,
+            item.className,
+            rankMap[idx],
+            item.j1 !== null ? item.j1.toFixed(2) : "",
+            item.j2 !== null ? item.j2.toFixed(2) : "",
+            item.j3 !== null ? item.j3.toFixed(2) : "",
+            item.finalScore !== null ? item.finalScore.toFixed(2) : "",
+            pred.label,
+            item.notesText
+          ];
+          lines.push(row.map(csvEscape).join(","));
+        });
+
+        var csvContent = "﻿" + lines.join("\r\n");
+        downloadBlob(
+          csvContent,
+          "rekap-lomba-penataan-kelas-sdn190.csv",
+          "text/csv;charset=utf-8;"
+        );
+        showToast("File CSV/Excel berhasil diunduh.", "success");
+      });
+
+      function csvEscape(val) {
+        var str = val === null || val === undefined ? "" : String(val);
+        if (/[",\r\n]/.test(str)) {
+          return '"' + str.replace(/"/g, '""') + '"';
+        }
+        return str;
+      }
+
+      document.getElementById("exportJsonBtn").addEventListener("click", function () {
+        var jsonStr = JSON.stringify(state, null, 2);
+        downloadBlob(
+          jsonStr,
+          "backup-lomba-penataan-kelas-sdn190.json",
+          "application/json;charset=utf-8;"
+        );
+        showToast("Cadangan JSON berhasil diekspor.", "success");
+      });
+
+      document.getElementById("importJsonBtn").addEventListener("click", function () {
+        document.getElementById("importJsonFile").click();
+      });
+
+      document.getElementById("importJsonFile").addEventListener("change", function (e) {
+        var file = e.target.files && e.target.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function (ev) {
+          try {
+            var parsed = JSON.parse(String(ev.target.result || ""));
+            state = normalizeState(parsed);
+            populateAdminInputs();
+            commitState();
+            showToast("Data JSON berhasil diimpor.", "success");
+          } catch (err) {
+            showToast("File JSON tidak valid atau rusak.", "error");
+          }
+        };
+        reader.readAsText(file);
+        this.value = "";
+      });
+
+      function downloadBlob(content, filename, mimeType) {
+        var blob = new Blob([content], { type: mimeType });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      }
+
+      document.getElementById("saveGasBtn").addEventListener("click", function () {
+        var urlVal = document.getElementById("gasUrlInput").value.trim();
+        if (urlVal && !/^https:\/\/script\.google\.com\/macros\/s\/.+/i.test(urlVal)) {
+          showToast("Pastikan URL berformat https://script.google.com/macros/s/...", "error");
+          return;
+        }
+        state.gasUrl = urlVal;
+        commitState({ syncGas: false });
+        if (urlVal) {
+          pushToGas(true);
+          startAutoPoll();
+        } else {
+          showToast("URL GAS dikosongkan.", "info");
+        }
+      });
+
+      document.getElementById("clearGasBtn").addEventListener("click", function () {
+        document.getElementById("gasUrlInput").value = "";
+        state.gasUrl = "";
+        commitState({ syncGas: false });
+        showToast("Koneksi Google Apps Script dihapus.", "info");
+      });
+
+      document.getElementById("toggleGasCodeBtn").addEventListener("click", function () {
+        var panel = document.getElementById("gasCodePanel");
+        panel.classList.toggle("hidden");
+      });
+
+      document.getElementById("copyGasCodeBtn").addEventListener("click", function () {
+        copyTextToClipboard(GAS_CODE_TEMPLATE, "Kode Code.gs berhasil disalin.");
+      });
+
+      document.getElementById("syncNowBtn").addEventListener("click", function () {
+        if (!state.gasUrl) return;
+        pullFromGas(true);
+      });
+
+      var pushDebounceTimer = null;
+      var autoPollTimer = null;
+      var pendingPush = false;
+      var isPushing = false;
+
+      function scheduleAutoPush() {
+        if (!state.gasUrl) return;
+        pendingPush = true;
+        var syncBadge = document.getElementById("syncBadge");
+        if (syncBadge) {
+          syncBadge.textContent = "Menyimpan Otomatis...";
+          syncBadge.className = "badge badge-amber";
+        }
+        if (pushDebounceTimer) clearTimeout(pushDebounceTimer);
+        pushDebounceTimer = setTimeout(function () {
+          pushToGas(false);
+        }, 300);
+      }
+
+      function startAutoPoll() {
+        if (autoPollTimer) clearInterval(autoPollTimer);
+        autoPollTimer = setInterval(function () {
+          if (currentRole && state.gasUrl) {
+            pullFromGas(false);
+          }
+        }, 4000);
+      }
+
+      window.addEventListener("online", function () {
+        if (pendingPush && state.gasUrl) {
+          pushToGas(false);
+        }
+      });
+
+      document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "hidden" && pendingPush && state.gasUrl) {
+          pushToGas(false);
+        } else if (document.visibilityState === "visible" && currentRole && state.gasUrl) {
+          pullFromGas(false);
+        }
+      });
+
+      function pushToGas(notifySuccess) {
+        if (!state.gasUrl) return;
+        if (isPushing) {
+          pendingPush = true;
+          return;
+        }
+        isPushing = true;
+        pendingPush = false;
+
+        var syncBadge = document.getElementById("syncBadge");
+        if (syncBadge) {
+          syncBadge.textContent = "Mengirim Otomatis...";
+          syncBadge.className = "badge badge-amber";
+        }
+
+        var payload;
+        if (currentRole === "j1" || currentRole === "j2" || currentRole === "j3") {
+          payload = {
+            action: "sync_judge",
+            role: currentRole,
+            scores: state.scores[currentRole],
+            state: state
+          };
+        } else {
+          payload = {
+            action: "sync",
+            state: state
+          };
+        }
+
+        fetch(state.gasUrl, {
+          method: "POST",
+          mode: "no-cors",
+          keepalive: true,
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        }).then(function () {
+          isPushing = false;
+          if (syncBadge) {
+            syncBadge.textContent = "Tersimpan Otomatis";
+            syncBadge.className = "badge badge-emerald";
+          }
+          if (notifySuccess) {
+            showToast("Data berhasil disinkronkan ke Google Sheets.", "success");
+          }
+          if (pendingPush) {
+            pushToGas(false);
+          }
+        }).catch(function () {
+          isPushing = false;
+          pendingPush = true;
+          if (syncBadge) {
+            syncBadge.textContent = "Menunggu Koneksi...";
+            syncBadge.className = "badge badge-rose";
+          }
+          if (notifySuccess) {
+            showToast("Gagal mengirim ke Google Apps Script. Akan dicoba ulang otomatis.", "error");
+          }
+          setTimeout(function () {
+            if (pendingPush) pushToGas(false);
+          }, 3000);
+        });
+      }
+
+      function applyRemoteState(remoteRaw, notify) {
+        var remote = normalizeState(remoteRaw);
+        if (currentRole === "j1" || currentRole === "j2" || currentRole === "j3") {
+          // Pertahankan input lokal juri yang sedang login agar tidak tertimpa saat mengetik,
+          // namun ambil status kunci, nama kelas, token, dan nilai juri lain.
+          var myLocalScores = state.scores[currentRole];
+          var localHadData = myLocalScores.some(function (r) {
+            return r.a !== "" || r.b !== "" || r.c !== "" || r.d !== "" || (r.note && r.note.trim() !== "");
+          });
+          var remoteHasData = remote.scores[currentRole].some(function (r) {
+            return r.a !== "" || r.b !== "" || r.c !== "" || r.d !== "" || (r.note && r.note.trim() !== "");
+          });
+          state.classes = remote.classes;
+          state.tokens = remote.tokens;
+          state.locked = remote.locked;
+          ["j1", "j2", "j3"].forEach(function (rKey) {
+            if (rKey !== currentRole) {
+              state.scores[rKey] = remote.scores[rKey];
+            } else if (!localHadData && remoteHasData) {
+              state.scores[rKey] = remote.scores[rKey];
+            }
+          });
+          saveStateLocalOnly(state);
+          renderAll();
+          if (notify) showToast("Status & data terbaru berhasil disinkronkan.", "success");
+        } else {
+          // Panitia selalu menerima gabungan nilai terbaru dari semua juri
+          state = remote;
+          saveStateLocalOnly(state);
+          if (currentRole === "admin") populateAdminInputs();
+          renderAll();
+          if (notify) showToast("Data penilaian terbaru dari para juri berhasil dimuat.", "success");
+        }
+      }
+
+      function pullFromGas(notify) {
+        if (!state.gasUrl) return;
+        var sep = state.gasUrl.indexOf("?") === -1 ? "?" : "&";
+        var url = state.gasUrl + sep + "t=" + Date.now();
+
+        fetch(url, { cache: "no-store" })
+          .then(function (res) { return res.json(); })
+          .then(function (resp) {
+            if (resp && resp.ok && resp.data) {
+              applyRemoteState(resp.data, notify);
+            } else if (notify) {
+              showToast("Server terhubung, belum ada data penilaian masuk.", "info");
+            }
+          })
+          .catch(function () {
+            // Fallback JSONP jika browser memblokir CORS redirect dari Apps Script
+            pullFromGasJsonp(notify);
+          });
+      }
+
+      function pullFromGasJsonp(notify) {
+        if (!state.gasUrl) return;
+        var cbName = "gasCb_" + Date.now() + "_" + Math.floor(Math.random() * 10000);
+        var script = document.createElement("script");
+        var done = false;
+
+        window[cbName] = function (resp) {
+          done = true;
+          cleanup();
+          if (resp && resp.ok && resp.data) {
+            applyRemoteState(resp.data, notify);
+          } else if (notify) {
+            showToast("Server merespons tanpa data penilaian.", "info");
+          }
+        };
+
+        function cleanup() {
+          try { delete window[cbName]; } catch (e) { window[cbName] = undefined; }
+          if (script.parentNode) script.parentNode.removeChild(script);
+        }
+
+        script.onerror = function () {
+          if (!done) {
+            cleanup();
+            if (notify) {
+              showToast("Gagal sinkron dengan Google Apps Script. Pastikan deployment Web App disetel ke 'Anyone' (Siapa saja).", "error");
+            }
+          }
+        };
+
+        var sep = state.gasUrl.indexOf("?") === -1 ? "?" : "&";
+        script.src = state.gasUrl + sep + "callback=" + cbName + "&t=" + Date.now();
+        document.body.appendChild(script);
+      }
+
+      function escapeHtml(str) {
+        return String(str || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function escapeAttr(val) {
+        if (val === "" || val === null || val === undefined) return "";
+        return escapeHtml(String(val));
+      }
+
+      initAuth();
+    })();
+  </script>
+</body>
+</html>
